@@ -4,7 +4,7 @@ import time
 
 sg.theme("Black")
 
-clock = sg.Text("", key="clock")
+clock = sg.Text("", key="clock", text_color="Green2")
 label = sg.Text("Type in a todo")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
 add_button = sg.Button("Add")
@@ -26,7 +26,7 @@ window = sg.Window("My Todo App",
 
 while True:
     event, values = window.read(timeout=200)
-    window["clock"].update(value=time.strftime(f"%b %d, %Y       %H:%M:%S"))
+    window["clock"].update(value=time.strftime(f"%b %d, %Y       %I:%M:%S %p"))
     # print(event)
     # print(values)
     # print(values["todos"])
