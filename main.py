@@ -47,6 +47,7 @@ while True:
             todos.remove(todo_to_complete)
             rw.write_todos(todos)
             window["todos"].update(values=todos)
+            window["todo"].update(value="")
         
         case "todos":
             window["todo"].update(value=values["todos"][0])
