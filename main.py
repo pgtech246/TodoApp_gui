@@ -1,6 +1,10 @@
 import readwrite as rw
 import PySimpleGUI as sg
+import time
 
+sg.theme("Black")
+
+clock = sg.Text("", key="clock")
 label = sg.Text("Type in a todo")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
 add_button = sg.Button("Add")
@@ -10,7 +14,8 @@ edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
 exit_button = sg.Button("Exit")
 
-layout = [[label], 
+layout = [[clock],
+          [label], 
           [input_box, add_button], 
           [list_box, edit_button, complete_button], 
           [exit_button]]
@@ -20,7 +25,8 @@ window = sg.Window("My Todo App",
                    font=("Helvetica", 11))
 
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout=200)
+    window["clock"].update(value=time.strftime(f"%b %d, %Y       %H:%M:%S"))
     # print(event)
     # print(values)
     # print(values["todos"])
