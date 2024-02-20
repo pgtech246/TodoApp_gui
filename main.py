@@ -45,12 +45,15 @@ while True:
                 sg.Popup("Please select an item first.", font=("Helvetica", 10))
 
         case "Complete":
-            todo_to_complete = values["todos"][0]
-            todos = rw.get_todos()
-            todos.remove(todo_to_complete)
-            rw.write_todos(todos)
-            window["todos"].update(values=todos)
-            window["todo"].update(value="")
+            try:
+                todo_to_complete = values["todos"][0]
+                todos = rw.get_todos()
+                todos.remove(todo_to_complete)
+                rw.write_todos(todos)
+                window["todos"].update(values=todos)
+                window["todo"].update(value="")
+            except IndexError:
+                sg.Popup("Please select an item first.", font=("Helvetica", 10))
 
         case "Exit":
             break
