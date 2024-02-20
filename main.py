@@ -21,9 +21,9 @@ window = sg.Window("My Todo App",
 
 while True:
     event, values = window.read()
-    print(event)
-    print(values)
-    print(values["todos"])
+    # print(event)
+    # print(values)
+    # print(values["todos"])
     match event:
         case "Add":
             todos = rw.get_todos()
@@ -38,6 +38,13 @@ while True:
             todos = rw.get_todos()
             index = todos.index(todo_to_edit)
             todos[index] = new_todo + "\n"
+            rw.write_todos(todos)
+            window["todos"].update(values=todos)
+
+        case "Complete":
+            todo_to_complete = values["todos"][0]
+            todos = rw.get_todos()
+            todos.remove(todo_to_complete)
             rw.write_todos(todos)
             window["todos"].update(values=todos)
         
