@@ -12,3 +12,7 @@ def write_todos(todos_local, filepath=FILEPATH):
     """Write list items to a .txt"""
     with open(filepath, "w") as file_local:
             file_local.writelines(todos_local)
+
+
+if __name__ == "__main__":
+      pass
